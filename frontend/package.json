@@ -102,6 +102,9 @@
     ]
   },
   "eslintConfig": {
+        "ignorePatterns": [
+      "build/"
+    ],
     "extends": [
       "react-app",
       "react-app/jest",
