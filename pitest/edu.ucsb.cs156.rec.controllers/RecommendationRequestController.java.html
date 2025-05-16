@@ -982,7 +982,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @param id the id of the RecommendationRequest to delete</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @return a message indicating that the RecommendationRequest was deleted</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -996,7 +996,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * @return a message indicating that the RecommendationRequest was deleted</span></pre></td></tr>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1010,7 +1010,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+<td class=''><pre><span  class=''>    @Operation(summary = &#34;An admin can delete a RecommendationRequest&#34;)</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1024,7 +1024,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    @Operation(summary = &#34;An admin can delete a RecommendationRequest&#34;)</span></pre></td></tr>
+<td class=''><pre><span  class=''>    @PreAuthorize(&#34;hasRole(&#39;ROLE_ADMIN&#39;)&#34;)</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1038,7 +1038,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    @PreAuthorize(&#34;hasRole(&#39;ROLE_ADMIN&#39;)&#34;)</span></pre></td></tr>
+<td class=''><pre><span  class=''>    @GetMapping(&#34;/admin/all&#34;)</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1052,30 +1052,16 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    @GetMapping(&#34;/admin/all&#34;)</span></pre></td></tr>
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@5ac53209_75'/>
-75
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_75'></a>
-<span>
-</span>
-</span>
-</td>
 <td class=''><pre><span  class=''>    public Object getRecommendationRequestsAsAdmin() {</span></pre></td></tr>
 
 <tr>
 <td class='uncovered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@5ac53209_76'/>
-76
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ac53209_75'/>
+75
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_76'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_75'>1</a>
 <span>
 1. getRecommendationRequestsAsAdmin : replaced return value with null for edu/ucsb/cs156/rec/controllers/RecommendationRequestController::getRecommendationRequestsAsAdmin &rarr; NO_COVERAGE<br/>
 
@@ -1083,6 +1069,20 @@
 </span>
 </td>
 <td class='uncovered'><pre><span  class='survived'>        return recommendationRequestRepository.findAll();</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ac53209_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1096,7 +1096,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1110,7 +1110,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1124,7 +1124,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * The user who posted a RecommendationRequest can delete their RecommendationRequest</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1138,7 +1138,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * The user who posted a RecommendationRequest can delete their RecommendationRequest</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1152,7 +1152,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param id the id of the RecommendationRequest to delete</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -3609,11 +3609,11 @@
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ac53209_76'>76</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ac53209_75'>75</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_76'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_75'/> 
 
 <p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRecommendationRequestsAsAdmin<br/><b>Killed by : </b>none</span></span> replaced return value with null for edu/ucsb/cs156/rec/controllers/RecommendationRequestController::getRecommendationRequestsAsAdmin &rarr; NO_COVERAGE</span>
 </div> 
@@ -3659,7 +3659,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_117'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$updateRecommendationRequestAsUser$2<br/><b>Killed by : </b>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_put_recommendation_request_that_does_not_exist()]</span></span> replaced return value with null for edu/ucsb/cs156/rec/controllers/RecommendationRequestController::lambda$updateRecommendationRequestAsUser$2 &rarr; KILLED</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$updateRecommendationRequestAsUser$2<br/><b>Killed by : </b>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_put_recommendation_request_for_another_user()]</span></span> replaced return value with null for edu/ucsb/cs156/rec/controllers/RecommendationRequestController::lambda$updateRecommendationRequestAsUser$2 &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -3759,7 +3759,7 @@
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ac53209_194'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getById<br/><b>Killed by : </b>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_cannot_get_by_id_when_the_id_exists_and_they_arent_professor_or_requester()]</span></span> negated conditional &rarr; KILLED</span>
-</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getById<br/><b>Killed by : </b>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_cannot_get_by_id_when_the_id_exists_and_they_arent_professor_or_requester()]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getById<br/><b>Killed by : </b>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_exists_and_they_are_professor()]</span></span> negated conditional &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -3917,7 +3917,7 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_exists_and_they_are_professor()] (9 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_exists_and_they_are_requester()] (11 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_put_recommendation_request_that_does_not_exist()] (8 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_put_recommendation_request_for_another_user()] (9 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_delete_their_recommendation_request()] (7 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:admin_can_not_delete_recommendation_request_that_does_not_exist()] (7 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:a_user_can_post_a_new_recommendation_request_with_existing_professor()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:rec_type_in_table_and_not_other()] (7 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_cannot_get_by_id_when_the_id_exists_and_they_arent_professor_or_requester()] (5 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_professors_can_get_all_requester()] (5 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_user_can_get_all_recommendation_requests_by_them()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_users_can_get_all_requester()] (12 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:rec_type_not_table_and_not_other()] (8 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:a_user_can_post_a_new_recommendation_request_without_existing_professor()] (10 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:admin_can_delete_recommendation_request()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist()] (8 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:prof_can_not_put_recommendation_request_that_does_not_exist()] (49 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_professors_can_get_all_professor()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_professors_can_get_all_recommendation_requests_for_them()] (11 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_logged_in_put_recommendation_request()] (13 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_delete_belonging_to_another_user()] (9 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_tries_to_delete_non_existant_recommendation_request_and_gets_right_error_message()] (82 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:prof_can_put_recommendation_request()] (8 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_professor_can_get_recommendation_request_by_type()] (8 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_professor_get_recommendation_request_by_status_empty_list()] (38 ms)</li>
+<li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_exists_and_they_are_professor()] (4 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_exists_and_they_are_requester()] (11 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_put_recommendation_request_for_another_user()] (10 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_put_recommendation_request_that_does_not_exist()] (15 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_delete_their_recommendation_request()] (30 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:admin_can_not_delete_recommendation_request_that_does_not_exist()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:a_user_can_post_a_new_recommendation_request_with_existing_professor()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:rec_type_in_table_and_not_other()] (10 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_cannot_get_by_id_when_the_id_exists_and_they_arent_professor_or_requester()] (5 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_professors_can_get_all_requester()] (5 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_user_can_get_all_recommendation_requests_by_them()] (8 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_users_can_get_all_requester()] (10 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:rec_type_not_table_and_not_other()] (5 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:a_user_can_post_a_new_recommendation_request_without_existing_professor()] (12 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:admin_can_delete_recommendation_request()] (12 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:prof_can_not_put_recommendation_request_that_does_not_exist()] (66 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_professors_can_get_all_professor()] (3 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:logged_in_professors_can_get_all_recommendation_requests_for_them()] (8 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_logged_in_put_recommendation_request()] (13 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_can_not_delete_belonging_to_another_user()] (7 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:user_tries_to_delete_non_existant_recommendation_request_and_gets_right_error_message()] (74 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestControllerTest]/[method:prof_can_put_recommendation_request()] (14 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_professor_can_get_recommendation_request_by_type()] (6 ms)</li><li>edu.ucsb.cs156.rec.controllers.RecommendationRequestTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.rec.controllers.RecommendationRequestTests]/[method:test_professor_get_recommendation_request_by_status_empty_list()] (29 ms)</li>
 </ul>
 
 <br/>
