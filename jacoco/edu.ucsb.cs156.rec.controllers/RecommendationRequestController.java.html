@@ -66,19 +66,19 @@ import lombok.extern.slf4j.Slf4j;
     /**
      * Any admin can get all RecommendationRequests
      * 
-     * @param id the id of the RecommendationRequest to delete
      * @return a message indicating that the RecommendationRequest was deleted
      */
     @Operation(summary = &quot;An admin can delete a RecommendationRequest&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @GetMapping(&quot;/admin/all&quot;)
     public Object getRecommendationRequestsAsAdmin() {
-<span class="nc" id="L76">        return recommendationRequestRepository.findAll();</span>
+<span class="nc" id="L75">        return recommendationRequestRepository.findAll();</span>
     }
 
     /**
      * The user who posted a RecommendationRequest can delete their RecommendationRequest
      * 
+     * @param id the id of the RecommendationRequest to delete
      * @return a message indicating that the RecommendationRequest was deleted
      */
     @Operation(summary = &quot;User can delete their RecommendationRequest&quot;)
