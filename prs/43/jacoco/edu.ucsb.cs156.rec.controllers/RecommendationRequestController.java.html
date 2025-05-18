@@ -68,7 +68,7 @@ import lombok.extern.slf4j.Slf4j;
      * 
      * @return a message indicating that the RecommendationRequest was deleted
      */
-    @Operation(summary = &quot;An admin can delete a RecommendationRequest&quot;)
+    @Operation(summary = &quot;An admin can get all RecommendationRequests&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @GetMapping(&quot;/admin/all&quot;)
     public Object getRecommendationRequestsAsAdmin() {
