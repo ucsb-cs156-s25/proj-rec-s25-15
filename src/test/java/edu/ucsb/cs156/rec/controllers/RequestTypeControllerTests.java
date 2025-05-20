@@ -105,6 +105,42 @@ public class RequestTypeControllerTests extends ControllerTestCase {
                                 .andExpect(status().is(403)); // only admins can delete
         }
 
+        @WithMockUser(roles = { "USER" })
+        @Test
+        public void correct_values_are_added_at_startup() throws Exception {
+                RequestType requestType1 = RequestType.builder()
+                                .requestType("CS Department BS/MS program")
+                                .build();
+                RequestType requestType2 = RequestType.builder()
+                                .requestType("Scholarship or Fellowship")
+                                .build();
+                RequestType requestType3 = RequestType.builder()
+                                .requestType("MS program (other than CS Dept BS/MS)")
+                                .build();
+                RequestType requestType4 = RequestType.builder()
+                                .requestType("PhD program")
+                                .build();
+                RequestType requestType5 = RequestType.builder()
+                                .requestType("Other")
+                                .build();
+
+                ArrayList<RequestType> expectedRequests = new ArrayList<>();
+                expectedRequests.addAll(Arrays.asList(requestType1, requestType2, requestType3, requestType4, requestType5));
+
+                when(requestTypeRepository.findAll()).thenReturn(expectedRequests);
+
+                // act
+                MvcResult response = mockMvc.perform(get("/api/requesttypes/all"))
+                                .andExpect(status().isOk()).andReturn();
+
+                // assert
+
+                verify(requestTypeRepository, times(1)).findAll();
+                String expectedJson = mapper.writeValueAsString(expectedRequests);
+                String responseString = response.getResponse().getContentAsString();
+                assertEquals(expectedJson, responseString);
+        }
+
         // // Tests with mocks for database actions
 
         @WithMockUser(roles = { "USER" })
@@ -178,6 +214,7 @@ public class RequestTypeControllerTests extends ControllerTestCase {
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(expectedJson, responseString);
         }
+
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
