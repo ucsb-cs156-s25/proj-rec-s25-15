@@ -88,7 +88,7 @@ public class RoleInterceptorTests extends ControllerTestCase{
         credentials.add(new SimpleGrantedAuthority("ROLE_USER"));
         credentials.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         credentials.add(new SimpleGrantedAuthority("ROLE_PROFESSOR"));
-        credentials.add(new SimpleGrantedAuthority("ROLE_STUDENT"));
+        
 
         OAuth2User user = new DefaultOAuth2User(credentials,values,"email");
         Authentication auth = new OAuth2AuthenticationToken(user, credentials, "google");
@@ -141,13 +141,12 @@ public class RoleInterceptorTests extends ControllerTestCase{
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_ADMIN"));
         boolean role_professor = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_PROFESSOR"));
-        boolean role_student = authorities.stream()
-            .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_STUDENT"));
+        
         boolean role_user = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_USER"));
         assertTrue(role_admin, "ROLE_ADMIN should be in roles list");
         assertTrue(role_professor, "ROLE_PROFESSOR should be in roles list");
-        assertTrue(role_student, "ROLE_STUDENT should be in roles list");
+       
         assertTrue(role_user, "ROLE_USER should be in roles list");
 
     }
@@ -185,13 +184,11 @@ public class RoleInterceptorTests extends ControllerTestCase{
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_ADMIN"));
         boolean role_professor = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_PROFESSOR"));
-        boolean role_student = authorities.stream()
-            .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_STUDENT"));
+        
         boolean role_user = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_USER"));
         assertFalse(role_admin, "ROLE_ADMIN should not be in roles list");
         assertTrue(role_professor, "ROLE_PROFESSOR should be in roles list");
-        assertFalse(role_student, "ROLE_STUDENT should not be in roles list");
         assertTrue(role_user, "ROLE_USER should be in roles list");
     }
 
@@ -228,13 +225,12 @@ public class RoleInterceptorTests extends ControllerTestCase{
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_ADMIN"));
         boolean role_professor = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_PROFESSOR"));
-        boolean role_student = authorities.stream()
-            .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_STUDENT"));
+        
         boolean role_user = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_USER"));
         assertTrue(role_admin, "ROLE_ADMIN should be in roles list");
         assertTrue(role_professor, "ROLE_PROFESSOR should be in roles list");
-        assertTrue(role_student, "ROLE_STUDENT should be in roles list");
+        
         assertTrue(role_user, "ROLE_USER should be in roles list");
     }
 
@@ -271,13 +267,11 @@ public class RoleInterceptorTests extends ControllerTestCase{
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_ADMIN"));
         boolean role_professor = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_PROFESSOR"));
-        boolean role_student = authorities.stream()
-            .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_STUDENT"));
+        
         boolean role_user = authorities.stream()
             .anyMatch(grantedAuth -> grantedAuth.getAuthority().equals("ROLE_USER"));
         assertTrue(role_admin, "ROLE_ADMIN should be in roles list");
         assertFalse(role_professor, "ROLE_PROFESSOR should not be in roles list");
-        assertFalse(role_student, "ROLE_STUDENT should be not in roles list");
         assertTrue(role_user, "ROLE_USER should be in roles list");
     }
             

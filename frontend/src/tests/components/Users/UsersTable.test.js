@@ -66,7 +66,7 @@ describe("UserTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-professor`),
     ).toHaveTextContent("false");
-    
+
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
       "2",
     );
@@ -76,11 +76,11 @@ describe("UserTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-professor`),
     ).toHaveTextContent("false");
-   
+
     expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent(
       "3",
     );
-    
+
     expect(
       screen.getByTestId(`${testId}-cell-row-2-col-professor`),
     ).toHaveTextContent("true");
