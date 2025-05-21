@@ -157,7 +157,6 @@ public class RoleInterceptorTests extends ControllerTestCase{
                 .email("joegaucho@ucsb.edu")
                 .id(15L)
                 .admin(false)
-                .student(false)
                 .professor(true)
                 .build();
 
@@ -240,7 +239,6 @@ public class RoleInterceptorTests extends ControllerTestCase{
                 .email("joegaucho@ucsb.edu")
                 .id(15L)
                 .admin(true)
-                .student(false)
                 .professor(false)
                 .build();
 
