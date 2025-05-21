@@ -48,8 +48,7 @@ public class RoleInterceptor implements HandlerInterceptor {
                 Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
                 Set<GrantedAuthority> revisedAuthorities = authorities.stream().filter(
                         grantedAuth -> !grantedAuth.getAuthority().equals("ROLE_ADMIN")
-                                && !grantedAuth.getAuthority().equals("ROLE_PROFESSOR")
-                                
+                                && !grantedAuth.getAuthority().equals("ROLE_PROFESSOR"))
                         .collect(Collectors.toSet());
                 if (user.getAdmin()) {
                     revisedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
