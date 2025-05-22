@@ -60,7 +60,7 @@ export default function AppNavbar({
               )}
               {(hasRole(currentUser, "ROLE_PROFESSOR") ||
                 (hasRole(currentUser, "ROLE_USER") &&
-                // Stryker disable next-line OptionalChaining
+                  // Stryker disable next-line OptionalChaining
                   currentUser?.root?.user?.student === true)) && (
                 <>
                   <Nav.Link as={Link} to="/requests/pending">
