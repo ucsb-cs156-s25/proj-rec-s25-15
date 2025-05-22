@@ -118,7 +118,6 @@ const apiCurrentUserFixtures = {
       locale: null,
       hostedDomain: null,
       admin: false,
-      student: false,
       professor: true,
     },
     roles: [
@@ -166,7 +165,6 @@ const apiCurrentUserFixtures = {
       locale: null,
       hostedDomain: null,
       admin: false,
-      student: true,
       professor: false,
     },
     roles: [
@@ -177,7 +175,7 @@ const apiCurrentUserFixtures = {
         authority: "ROLE_USER",
       },
       {
-        authority: "ROLE_STUDENT",
+        authority: "ROLE_USER",
       },
       {
         authority: "SCOPE_https://www.googleapis.com/auth/userinfo.profile",
@@ -253,7 +251,7 @@ const currentUserFixtures = {
       rolesList: [
         "SCOPE_openid",
         "ROLE_USER",
-        "ROLE_STUDENT",
+        "ROLE_USER",
         "SCOPE_https://www.googleapis.com/auth/userinfo.profile",
         "SCOPE_https://www.googleapis.com/auth/userinfo.email",
       ],

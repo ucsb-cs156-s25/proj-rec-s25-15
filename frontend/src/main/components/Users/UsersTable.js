@@ -82,7 +82,6 @@ export default function UsersTable({ users }) {
       id: "professor",
       accessor: (row, _rowIndex) => String(row.professor), // hack needed for boolean values to show up
     },
-    
   ];
 
   const buttonColumn = [
