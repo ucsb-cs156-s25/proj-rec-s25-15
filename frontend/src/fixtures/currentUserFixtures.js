@@ -166,6 +166,7 @@ const apiCurrentUserFixtures = {
       hostedDomain: null,
       admin: false,
       professor: false,
+      student:true,
     },
     roles: [
       {
