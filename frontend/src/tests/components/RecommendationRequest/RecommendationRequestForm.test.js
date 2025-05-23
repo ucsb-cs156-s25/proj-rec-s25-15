@@ -24,14 +24,31 @@ describe("RecommendationRequestForm tests", () => {
     jest.clearAllMocks();
     axiosMock.reset();
     axiosMock.resetHistory();
+
     axiosMock
       .onGet("/api/admin/users/professors")
       .reply(200, usersFixtures.userOnly);
     axiosMock
       .onGet("/api/requesttypes/all")
       .reply(200, recommendationTypeFixtures.fourTypes);
-    global.fetch = jest.fn();
+
+    global.fetch = jest.fn((url) => {
+      if (url.includes("/api/admin/users/professors")) {
+        return Promise.resolve({
+          json: () => Promise.resolve(usersFixtures.twoProfessors),
+        });
+      }
+
+      if (url.includes("/api/requesttypes/all")) {
+        return Promise.resolve({
+          json: () => Promise.resolve(recommendationTypeFixtures.fourTypes),
+        });
+      }
+
+      return Promise.reject(new Error("Unhandled fetch: " + url));
+    });
   });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -195,5 +212,43 @@ describe("RecommendationRequestForm tests", () => {
     expect(
       screen.getByText(/Please select a recommendation type/),
     ).toBeInTheDocument();
+    expect(screen.getByText(/Please select a due date/)).toBeInTheDocument();
+  });
+
+  test("submitAction is called with correctly formatted dueDate", async () => {
+    const mockSubmit = jest.fn();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <RecommendationRequestForm
+            initialContents={{
+              id: 1,
+              professor_id: "1",
+              recommendationType: "Other",
+              details: "Test details",
+              dueDate: "2025-05-18",
+            }}
+            professorVals={usersFixtures.twoProfessors}
+            recommendationTypeVals={recommendationTypeFixtures.fourTypes}
+            submitAction={mockSubmit}
+          />
+        </Router>
+      </QueryClientProvider>,
+    );
+
+    fireEvent.change(screen.getByTestId("RecommendationRequestForm-dueDate"), {
+      target: { value: "2025-05-19" },
+    });
+
+    fireEvent.click(screen.getByTestId("RecommendationRequestForm-submit"));
+
+    await waitFor(() =>
+      expect(mockSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          dueDate: "2025-05-19T00:00:00",
+        }),
+      ),
+    );
   });
 });

@@ -85,6 +85,13 @@ export default function AppNavbar({
                   </Nav.Link>
                 </>
               )}
+              {hasRole(currentUser, "ROLE_STUDENT") && (
+                <>
+                  <Nav.Link as={Link} to="/requests">
+                    My Requests
+                  </Nav.Link>
+                </>
+              )}
             </Nav>
 
             <Nav className="ml-auto">
