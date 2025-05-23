@@ -37,15 +37,6 @@ import jakarta.validation.Valid;
     @Autowired
     RequestTypeRepository requestTypeRepository;
 
-    @Autowired
-    public void startupValues() {
-<span class="fc" id="L42">        String[] values = {&quot;CS Department BS/MS program&quot;, &quot;Scholarship or Fellowship&quot;, &quot;MS program (other than CS Dept BS/MS)&quot;, &quot;PhD program&quot;, &quot;Other&quot;};</span>
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        for (String value : values) {</span>
-<span class="pc bpc" id="L44" title="1 of 2 branches missed.">            if (!requestTypeRepository.findByRequestType(value).isPresent()) {</span>
-<span class="fc" id="L45">                requestTypeRepository.save(RequestType.builder().requestType(value).build());</span>
-            }
-        }
-<span class="fc" id="L48">    }</span>
 
     /**
      * This method returns a list of all Request Types.
@@ -56,8 +47,8 @@ import jakarta.validation.Valid;
     @GetMapping(&quot;/all&quot;)
     public Iterable&lt;RequestType&gt; allRequestTypes(
     ) {
-<span class="fc" id="L59">        Iterable&lt;RequestType&gt; requestTypes = requestTypeRepository.findAll();</span>
-<span class="fc" id="L60">        return requestTypes;</span>
+<span class="fc" id="L50">        Iterable&lt;RequestType&gt; requestTypes = requestTypeRepository.findAll();</span>
+<span class="fc" id="L51">        return requestTypes;</span>
     }
 
         /**
@@ -71,10 +62,10 @@ import jakarta.validation.Valid;
     @GetMapping(&quot;&quot;)
     public RequestType getById(
             @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
-<span class="fc" id="L74">        RequestType requestType = requestTypeRepository.findById(id)</span>
-<span class="fc" id="L75">                .orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, id));</span>
+<span class="fc" id="L65">        RequestType requestType = requestTypeRepository.findById(id)</span>
+<span class="fc" id="L66">                .orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, id));</span>
 
-<span class="fc" id="L77">        return requestType;</span>
+<span class="fc" id="L68">        return requestType;</span>
     }
 
     /**
@@ -90,23 +81,23 @@ import jakarta.validation.Valid;
             @Parameter(name=&quot;requestType&quot;) @RequestParam String requestType)
             throws JsonProcessingException {
 
-<span class="fc" id="L93">        log.info(&quot;requestType={}&quot;, requestType);</span>
+<span class="fc" id="L84">        log.info(&quot;requestType={}&quot;, requestType);</span>
 
         // Check for duplicates
-<span class="fc" id="L96">        Iterable&lt;RequestType&gt; existingRequestTypes = requestTypeRepository.findAll();</span>
-<span class="fc bfc" id="L97" title="All 2 branches covered.">        for (RequestType existing : existingRequestTypes) {</span>
-<span class="fc bfc" id="L98" title="All 2 branches covered.">            if (existing.getRequestType().equals(requestType)) {</span>
-<span class="fc" id="L99">                throw new IllegalArgumentException(&quot;Duplicate request type: &quot; + requestType);</span>
+<span class="fc" id="L87">        Iterable&lt;RequestType&gt; existingRequestTypes = requestTypeRepository.findAll();</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        for (RequestType existing : existingRequestTypes) {</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            if (existing.getRequestType().equals(requestType)) {</span>
+<span class="fc" id="L90">                throw new IllegalArgumentException(&quot;Duplicate request type: &quot; + requestType);</span>
             }
-<span class="fc" id="L101">        }</span>
+<span class="fc" id="L92">        }</span>
 
         // Create new request type
-<span class="fc" id="L104">        RequestType requestTypeNew = new RequestType();</span>
-<span class="fc" id="L105">        requestTypeNew.setRequestType(requestType);</span>
+<span class="fc" id="L95">        RequestType requestTypeNew = new RequestType();</span>
+<span class="fc" id="L96">        requestTypeNew.setRequestType(requestType);</span>
 
-<span class="fc" id="L107">        RequestType savedRequestType = requestTypeRepository.save(requestTypeNew);</span>
+<span class="fc" id="L98">        RequestType savedRequestType = requestTypeRepository.save(requestTypeNew);</span>
 
-<span class="fc" id="L109">        return savedRequestType;</span>
+<span class="fc" id="L100">        return savedRequestType;</span>
     }
 
     /**
@@ -120,11 +111,11 @@ import jakarta.validation.Valid;
     @DeleteMapping(&quot;&quot;)
     public Object deleteRequestType(
             @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
-<span class="fc" id="L123">        RequestType requestType = requestTypeRepository.findById(id)</span>
-<span class="fc" id="L124">                .orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, id));</span>
+<span class="fc" id="L114">        RequestType requestType = requestTypeRepository.findById(id)</span>
+<span class="fc" id="L115">                .orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, id));</span>
 
-<span class="fc" id="L126">        requestTypeRepository.delete(requestType);</span>
-<span class="fc" id="L127">        return genericMessage(&quot;Request type with id %s deleted&quot;.formatted(id));</span>
+<span class="fc" id="L117">        requestTypeRepository.delete(requestType);</span>
+<span class="fc" id="L118">        return genericMessage(&quot;Request type with id %s deleted&quot;.formatted(id));</span>
     }
 
     /**
@@ -141,26 +132,26 @@ import jakarta.validation.Valid;
             @Parameter(name=&quot;id&quot;) @RequestParam Long id,
             @RequestBody @Valid RequestType incoming) {
 
-<span class="fc" id="L144">        RequestType requestType = requestTypeRepository.findById(id)</span>
-<span class="fc" id="L145">                .orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, id));</span>
+<span class="fc" id="L135">        RequestType requestType = requestTypeRepository.findById(id)</span>
+<span class="fc" id="L136">                .orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, id));</span>
 
 
         // Check for duplicates
-<span class="fc" id="L149">        Iterable&lt;RequestType&gt; existingRequestTypes = requestTypeRepository.findAll();</span>
-<span class="fc bfc" id="L150" title="All 2 branches covered.">        for (RequestType existing : existingRequestTypes) {</span>
-<span class="fc bfc" id="L151" title="All 2 branches covered.">            if (incoming.getRequestType().isEmpty()){</span>
-<span class="fc" id="L152">                throw new IllegalArgumentException(&quot;Request type cannot be empty&quot;);</span>
+<span class="fc" id="L140">        Iterable&lt;RequestType&gt; existingRequestTypes = requestTypeRepository.findAll();</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">        for (RequestType existing : existingRequestTypes) {</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">            if (incoming.getRequestType().isEmpty()){</span>
+<span class="fc" id="L143">                throw new IllegalArgumentException(&quot;Request type cannot be empty&quot;);</span>
             }
-<span class="fc bfc" id="L154" title="All 2 branches covered.">            if (existing.getRequestType().equals(incoming.getRequestType())) {</span>
-<span class="fc" id="L155">                throw new IllegalArgumentException(&quot;Duplicate request type: &quot; + incoming);</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">            if (existing.getRequestType().equals(incoming.getRequestType())) {</span>
+<span class="fc" id="L146">                throw new IllegalArgumentException(&quot;Duplicate request type: &quot; + incoming);</span>
             }
-<span class="fc" id="L157">        }</span>
+<span class="fc" id="L148">        }</span>
 
         // Update and save the request type
-<span class="fc" id="L160">        requestType.setRequestType(incoming.getRequestType());</span>
-<span class="fc" id="L161">        requestTypeRepository.save(requestType);</span>
+<span class="fc" id="L151">        requestType.setRequestType(incoming.getRequestType());</span>
+<span class="fc" id="L152">        requestTypeRepository.save(requestType);</span>
 
-<span class="fc" id="L163">        return requestType;</span>
+<span class="fc" id="L154">        return requestType;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
