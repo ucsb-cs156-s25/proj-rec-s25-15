@@ -2,11 +2,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "main/pages/HomePage";
 import ProfilePage from "main/pages/ProfilePage";
 import AdminUsersPage from "main/pages/AdminUsersPage";
+import SettingsPage from "main/pages/SettingsPage";
 import AdminRequestsPage from "main/pages/AdminRequestsPage";
 
 import PendingRequestsPage from "main/pages/Requests/PendingRequestsPage";
 import CompletedRequestsPage from "main/pages/Requests/CompletedRequestsPage";
 import StatisticsPage from "main/pages/Requests/StatisticsPage";
+
+import RequestTypesCreatePage from "main/pages/RequestTypes/RequestTypesCreatePage";
+import RequestTypesEditPage from "main/pages/RequestTypes/RequestTypesEditPage";
+import RequestTypesIndexPage from "main/pages/RequestTypes/RequestTypesIndexPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -28,6 +33,37 @@ function App() {
               exact
               path="/admin/requests"
               element={<AdminRequestsPage />}
+            />
+          </>
+        )}
+        {(hasRole(currentUser, "ROLE_ADMIN") ||
+          hasRole(currentUser, "ROLE_PROFESSOR")) && (
+          <>
+            <Route exact path="/settings" element={<SettingsPage />} />
+          </>
+        )}
+        {(hasRole(currentUser, "ROLE_ADMIN") ||
+          hasRole(currentUser, "ROLE_PROFESSOR")) && (
+          <>
+            <Route
+              exact
+              path="/settings/requesttypes"
+              element={<RequestTypesIndexPage />}
+            />
+          </>
+        )}
+        {(hasRole(currentUser, "ROLE_ADMIN") ||
+          hasRole(currentUser, "ROLE_PROFESSOR")) && (
+          <>
+            <Route
+              exact
+              path="/settings/requesttypes/edit"
+              element={<RequestTypesEditPage />}
+            />
+            <Route
+              exact
+              path="/settings/requesttypes/create"
+              element={<RequestTypesCreatePage />}
             />
           </>
         )}

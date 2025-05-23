@@ -61,6 +61,14 @@ export default function AppNavbar({
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
+              {(hasRole(currentUser, "ROLE_ADMIN") ||
+                hasRole(currentUser, "ROLE_PROFESSOR")) && (
+                <>
+                  <Nav.Link as={Link} to="/settings">
+                    Settings
+                  </Nav.Link>
+                </>
+              )}
               {(hasRole(currentUser, "ROLE_PROFESSOR") ||
                 hasRole(currentUser, "ROLE_STUDENT")) && (
                 <>
