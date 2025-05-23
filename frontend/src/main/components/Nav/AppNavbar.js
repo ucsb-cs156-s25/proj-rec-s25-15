@@ -56,7 +56,18 @@ export default function AppNavbar({
                   data-testid="appnavbar-admin-dropdown"
                 >
                   <NavDropdown.Item href="/admin/users">Users</NavDropdown.Item>
+                  <NavDropdown.Item href="/admin/requests">
+                    Requests
+                  </NavDropdown.Item>
                 </NavDropdown>
+              )}
+              {(hasRole(currentUser, "ROLE_ADMIN") ||
+                hasRole(currentUser, "ROLE_PROFESSOR")) && (
+                <>
+                  <Nav.Link as={Link} to="/settings">
+                    Settings
+                  </Nav.Link>
+                </>
               )}
               {(hasRole(currentUser, "ROLE_PROFESSOR") ||
                 (hasRole(currentUser, "ROLE_USER") &&

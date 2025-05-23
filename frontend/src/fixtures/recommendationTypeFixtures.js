@@ -1,4 +1,8 @@
 const recommendationTypeFixtures = {
+  oneType: {
+    id: 123,
+    requestType: "University Transfer",
+  },
   fourTypes: [
     {
       id: 1,

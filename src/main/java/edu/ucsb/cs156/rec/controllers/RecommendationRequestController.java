@@ -64,6 +64,18 @@ public class RecommendationRequestController extends ApiController {
     }
 
     /**
+     * Any admin can get all RecommendationRequests
+     * 
+     * @return a message indicating that the RecommendationRequest was deleted
+     */
+    @Operation(summary = "An admin can get all RecommendationRequests")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin/all")
+    public Object getRecommendationRequestsAsAdmin() {
+        return recommendationRequestRepository.findAll();
+    }
+
+    /**
      * The user who posted a RecommendationRequest can delete their RecommendationRequest
      * 
      * @param id the id of the RecommendationRequest to delete
@@ -131,7 +143,7 @@ public class RecommendationRequestController extends ApiController {
                 .orElseThrow(() -> new EntityNotFoundException(RecommendationRequest.class, id));
 
         recommendationRequest.setStatus(incoming.getStatus());
-
+        recommendationRequest.setCompletionDate(incoming.getCompletionDate());
         recommendationRequestRepository.save(recommendationRequest);
 
         return recommendationRequest;

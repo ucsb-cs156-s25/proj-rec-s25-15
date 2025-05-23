@@ -232,6 +232,55 @@ public class RecommendationRequestControllerTest extends ControllerTestCase {
 
     }
 
+    //Admin can get all recommendation requests
+    @WithMockUser(roles = { "ADMIN", "USER" })
+    @Test
+    public void admin_can_get_all_recommendation_requests() throws Exception {
+        // arrange
+
+        User user2 = User.builder().id(44).build(); 
+        User prof = User.builder()
+                .id(22L)
+                .email("profA@ucsb.edu")
+                .googleSub("googleSub")
+                .fullName("Prof A")
+                .givenName("Prof")
+                .familyName("A")
+                .emailVerified(true)
+                .professor(true)
+                .build();
+
+        RecommendationRequest rec1 = RecommendationRequest.builder()
+                .id(67L)
+                .requester(user2)
+                .professor(prof)
+                .recommendationType("PhDprogram")
+                .details("details")
+                .status("PENDING")
+                .completionDate(LocalDateTime.parse("2022-01-03T00:00:00"))
+                .dueDate(LocalDateTime.parse("2022-01-03T00:00:00"))
+                .submissionDate(LocalDateTime.parse("2022-01-03T00:00:00"))
+                .lastModifiedDate(LocalDateTime.parse("2022-01-03T00:00:00"))
+                .build();
+
+        ArrayList<RecommendationRequest> allRequests = new ArrayList<>();
+        allRequests.add(rec1);
+
+        when(recommendationRequestRepository.findAll()).thenReturn(allRequests);
+        // act
+        MvcResult response = mockMvc.perform(
+                get("/api/recommendationrequest/admin/all")
+                        .with(csrf()))
+                .andExpect(status().isOk()).andReturn();
+
+        // assert
+        verify(recommendationRequestRepository, times(1)).findAll();
+        
+        String expected = mapper.writeValueAsString(allRequests);
+        String actual = response.getResponse().getContentAsString();
+        assertEquals(expected, actual);
+    }
+
     //Admin can't delete a recommendation request that dne
     @WithMockUser(roles = { "ADMIN", "USER" })
     @Test
@@ -470,7 +519,7 @@ public class RecommendationRequestControllerTest extends ControllerTestCase {
                 .recommendationType("PhDprogram")
                 .details("details")
                 .status("PENDING")
-                .completionDate(LocalDateTime.parse("2022-01-03T00:00:00"))
+                .completionDate(null)
                 .dueDate(LocalDateTime.parse("2022-01-03T00:00:00"))
                 .submissionDate(LocalDateTime.parse("2022-01-03T00:00:00"))
                 .lastModifiedDate(LocalDateTime.parse("2022-01-03T00:00:00"))
