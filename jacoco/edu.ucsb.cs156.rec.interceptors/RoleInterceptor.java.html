@@ -49,7 +49,7 @@ import edu.ucsb.cs156.rec.entities.User;
 <span class="fc" id="L49">                Set&lt;GrantedAuthority&gt; revisedAuthorities = authorities.stream().filter(</span>
 <span class="fc bfc" id="L50" title="All 2 branches covered.">                        grantedAuth -&gt; !grantedAuth.getAuthority().equals(&quot;ROLE_ADMIN&quot;)</span>
 <span class="fc bfc" id="L51" title="All 2 branches covered.">                                &amp;&amp; !grantedAuth.getAuthority().equals(&quot;ROLE_PROFESSOR&quot;)</span>
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">                                &amp;&amp; !grantedAuth.getAuthority().equals(&quot;ROLE_USER&quot;))</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">                                &amp;&amp; !grantedAuth.getAuthority().equals(&quot;ROLE_STUDENT&quot;))</span>
 <span class="fc" id="L53">                        .collect(Collectors.toSet());</span>
 <span class="fc bfc" id="L54" title="All 2 branches covered.">                if (user.getAdmin()) {</span>
 <span class="fc" id="L55">                    revisedAuthorities.add(new SimpleGrantedAuthority(&quot;ROLE_ADMIN&quot;));</span>
@@ -57,8 +57,8 @@ import edu.ucsb.cs156.rec.entities.User;
 <span class="fc bfc" id="L57" title="All 2 branches covered.">                if (user.getProfessor()) {</span>
 <span class="fc" id="L58">                    revisedAuthorities.add(new SimpleGrantedAuthority(&quot;ROLE_PROFESSOR&quot;));</span>
                 }
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">                if (user.getStudent()) {</span>
-<span class="fc" id="L61">                    revisedAuthorities.add(new SimpleGrantedAuthority(&quot;ROLE_USER&quot;));</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">                if (user.getStudent()) {</span>
+<span class="fc" id="L61">                    revisedAuthorities.add(new SimpleGrantedAuthority(&quot;ROLE_STUDENT&quot;));</span>
                 }
 <span class="fc" id="L63">                Authentication newAuth = new OAuth2AuthenticationToken(principal, revisedAuthorities,</span>
 <span class="fc" id="L64">                        (((OAuth2AuthenticationToken) authentication).getAuthorizedClientRegistrationId()));</span>
