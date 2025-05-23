@@ -128,9 +128,7 @@ public class SecurityConfig {
             mappedAuthorities.add(new SimpleGrantedAuthority("ROLE_PROFESSOR"));
           }
 
-          if(getStudent(email)){
-            mappedAuthorities.add(new SimpleGrantedAuthority("ROLE_STUDENT"));
-          }
+          
         }
 
       });
@@ -160,10 +158,7 @@ public class SecurityConfig {
     return u.isPresent() && u.get().getProfessor();
   }
 
-  public boolean getStudent(String email) {
-    Optional<User> u = userRepository.findByEmail(email);
-    return u.isPresent() && u.get().getStudent();
-  }
+ 
 }
 
 final class SpaCsrfTokenRequestHandler extends CsrfTokenRequestAttributeHandler {
