@@ -1,0 +1,38 @@
+{ "databaseChangeLog": [
+  {
+    "changeSet": {
+      "id": "RecommendationRequest-add-foreign-key",
+      "author": "Lucas Havemose",
+      "preConditions": [
+        {
+          "onFail": "MARK_RAN"
+        },
+        {
+          "not": {
+            "columnExists": {
+              "tableName": "RECOMMENDATIONREQUEST"
+            }
+          }
+        }
+      ],
+      "changes": [
+        {
+          "addUniqueConstraint": {
+            "constraintName": "REQUESTTYPE_UNIQUE_TYPE",
+            "tableName": "REQUESTTYPE",
+            "columnNames": "REQUEST_TYPE"
+          },
+          "addForeignKeyConstraint": {
+            "constraintName": "RECOMMENDATIONREQUEST_RECOMMENDATION_TYPE_FK",
+            "baseTableName": "RECOMMENDATIONREQUEST",
+            "baseColumnNames": "RECOMMENDATION_TYPE",
+            "onDelete": "RESTRICT",
+            "onUpdate": "RESTRICT",
+            "referencedTableName": "REQUESTTYPE",
+            "referencedColumnNames": "REQUEST_TYPE"
+          }
+        }
+      ]
+    }
+  }
+]}

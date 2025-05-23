@@ -218,10 +218,9 @@ public class RecommendationRequestController extends ApiController {
         //get current date right now and set status to pending
         CurrentUser currentUser = getCurrentUser();
         RecommendationRequest recommendationRequest = new RecommendationRequest();
-        if (!recommendationType.equals("Other")) {
-            requestTypeRepository.findByRequestType(recommendationType).orElseThrow(() -> new EntityNotFoundException(RequestType.class, recommendationType));
-        }
-        recommendationRequest.setRecommendationType(recommendationType);
+
+        RequestType type = requestTypeRepository.findByRequestType(recommendationType).orElseThrow(() -> new EntityNotFoundException(RequestType.class, recommendationType));
+        recommendationRequest.setRecommendationType(type);
         recommendationRequest.setDetails(details);
         User professor = userRepository.findById(professorId).orElseThrow(() -> new EntityNotFoundException(User.class, professorId));
         recommendationRequest.setProfessor(professor);

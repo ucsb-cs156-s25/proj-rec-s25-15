@@ -116,11 +116,14 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 // arrange
                 User professor = User.builder().email("testemail@ucsb.edu").fullName("Test Prof").build();
                 User currentUser = currentUserService.getCurrentUser().getUser();
+                RequestType requestType = RequestType.builder()
+                                .requestType("PhD program")
+                                .build();
                 LocalDateTime now = LocalDateTime.now();
                 RecommendationRequest recommendationRequest = RecommendationRequest.builder()
                                 .professor(professor)
                                 .requester(currentUser)
-                                .recommendationType("PhD program")
+                                .recommendationType(requestType)
                                 .details("other details")
                                 .dueDate(now)
                                 .build();
@@ -146,11 +149,14 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 // arrange
                 User currentUser = currentUserService.getCurrentUser().getUser();
                 User requester = User.builder().email("testemail@ucsb.edu").fullName("Test Prof").build();
+                RequestType requestType = RequestType.builder()
+                                .requestType("PhD program")
+                                .build();
                 LocalDateTime now = LocalDateTime.now();
                 RecommendationRequest recommendationRequest = RecommendationRequest.builder()
                                 .professor(currentUser)
                                 .requester(requester)
-                                .recommendationType("PhD program")
+                                .recommendationType(requestType)
                                 .details("other details")
                                 .dueDate(now)
                                 .build();
@@ -175,11 +181,14 @@ public class RecommendationRequestTests extends ControllerTestCase {
 
                 // arrange
                 User requester = User.builder().email("testemail@ucsb.edu").fullName("Test Prof").build();
+                RequestType requestType = RequestType.builder()
+                                .requestType("PhD program")
+                                .build();
                 LocalDateTime now = LocalDateTime.now();
                 RecommendationRequest recommendationRequest = RecommendationRequest.builder()
                                 .professor(requester)
                                 .requester(requester)
-                                .recommendationType("PhD program")
+                                .recommendationType(requestType)
                                 .details("other details")
                                 .dueDate(now)
                                 .build();
@@ -225,11 +234,14 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 User other = User.builder().email("testemail@ucsb.edu").fullName("Test User").build();
                 User other2 = User.builder().email("testemail2@ucsb.edu").fullName("Test User2").build();
                 User currentUser = currentUserService.getCurrentUser().getUser();
+                RequestType requestType = RequestType.builder()
+                                .requestType("PhD program")
+                                .build();
                 LocalDateTime now = LocalDateTime.now();
                 RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
                                 .professor(other)
                                 .requester(currentUser)
-                                .recommendationType("PhD program")
+                                .recommendationType(requestType)
                                 .details("other details")
                                 .dueDate(now)
                                 .build();
@@ -237,7 +249,7 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 RecommendationRequest recommendationRequest2 = RecommendationRequest.builder()
                                 .professor(other2)
                                 .requester(currentUser)
-                                .recommendationType("PhD program")
+                                .recommendationType(requestType)
                                 .details("other details")
                                 .dueDate(now)
                                 .build();
@@ -268,11 +280,14 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 User other = User.builder().id(1L).email("testemail@ucsb.edu").fullName("Test User").build();
                 User other2 = User.builder().id(2L).email("testemail2@ucsb.edu").fullName("Test User2").build();
                 User currentUser = currentUserService.getCurrentUser().getUser();
+                RequestType requestType = RequestType.builder()
+                                .requestType("PhD program")
+                                .build();
                 LocalDateTime now = LocalDateTime.now();
                 RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
                                 .professor(currentUser)
                                 .requester(other)
-                                .recommendationType("PhD program")
+                                .recommendationType(requestType)
                                 .details("other details")
                                 .dueDate(now)
                                 .build();
@@ -280,7 +295,7 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 RecommendationRequest recommendationRequest2 = RecommendationRequest.builder()
                                 .professor(currentUser)
                                 .requester(other2)
-                                .recommendationType("PhD program")
+                                .recommendationType(requestType)
                                 .details("other details")
                                 .dueDate(now)
                                 .build();
@@ -308,10 +323,13 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 // arrange
                 User u = currentUserService.getCurrentUser().getUser();
                 User other = User.builder().id(7L).email("testemail@ucsb.edu").fullName("Test User").build();
+                RequestType requestType = RequestType.builder()
+                                .requestType("Other")
+                                .build();
                 RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
                                 .professor(other)
                                 .requester(u)
-                                .recommendationType("Other")
+                                .recommendationType(requestType)
                                 .details("otherdetails")
                                 .dueDate(LocalDateTime.parse("2024-11-25T16:46:28"))
                                 .status("PENDING")
@@ -319,6 +337,7 @@ public class RecommendationRequestTests extends ControllerTestCase {
 
                 when(recommendationRequestRepository.save(eq(recommendationRequest1))).thenReturn(recommendationRequest1);
                 when(userRepository.findById(7L)).thenReturn(Optional.of(other));
+                when(requestTypeRepository.findByRequestType("Other")).thenReturn(Optional.of(requestType));
                 // act
                 MvcResult response = mockMvc.perform(
                                 post("/api/recommendationrequest/post")
@@ -360,10 +379,13 @@ public class RecommendationRequestTests extends ControllerTestCase {
                 // arrange
                 User u = currentUserService.getCurrentUser().getUser();
                 User other = User.builder().id(7L).email("testemail@ucsb.edu").fullName("Test User").build();
+                RequestType requestType = RequestType.builder()
+                                .requestType("CS Department BS/MS program")
+                                .build();
                 RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
                                 .professor(other)
                                 .requester(u)
-                                .recommendationType("CS Department BS/MS program")
+                                .recommendationType(requestType)
                                 .details("test")
                                 .dueDate(LocalDateTime.parse("2024-11-25T16:46:28"))
                                 .status("PENDING")
