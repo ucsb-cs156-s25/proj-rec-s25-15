@@ -218,19 +218,18 @@ import lombok.extern.slf4j.Slf4j;
         //get current date right now and set status to pending
 <span class="fc" id="L219">        CurrentUser currentUser = getCurrentUser();</span>
 <span class="fc" id="L220">        RecommendationRequest recommendationRequest = new RecommendationRequest();</span>
-<span class="fc bfc" id="L221" title="All 2 branches covered.">        if (!recommendationType.equals(&quot;Other&quot;)) {</span>
-<span class="fc" id="L222">            requestTypeRepository.findByRequestType(recommendationType).orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, recommendationType));</span>
-        }
-<span class="fc" id="L224">        recommendationRequest.setRecommendationType(recommendationType);</span>
-<span class="fc" id="L225">        recommendationRequest.setDetails(details);</span>
-<span class="fc" id="L226">        User professor = userRepository.findById(professorId).orElseThrow(() -&gt; new EntityNotFoundException(User.class, professorId));</span>
-<span class="fc" id="L227">        recommendationRequest.setProfessor(professor);</span>
-<span class="fc" id="L228">        recommendationRequest.setRequester(currentUser.getUser());</span>
-<span class="fc" id="L229">        recommendationRequest.setStatus(&quot;PENDING&quot;);</span>
-<span class="fc" id="L230">        recommendationRequest.setDueDate(dueDate);</span>
 
-<span class="fc" id="L232">        RecommendationRequest savedRecommendationRequest = recommendationRequestRepository.save(recommendationRequest);</span>
-<span class="fc" id="L233">        return savedRecommendationRequest;</span>
+<span class="fc" id="L222">        RequestType type = requestTypeRepository.findByRequestType(recommendationType).orElseThrow(() -&gt; new EntityNotFoundException(RequestType.class, recommendationType));</span>
+<span class="fc" id="L223">        recommendationRequest.setRecommendationType(type);</span>
+<span class="fc" id="L224">        recommendationRequest.setDetails(details);</span>
+<span class="fc" id="L225">        User professor = userRepository.findById(professorId).orElseThrow(() -&gt; new EntityNotFoundException(User.class, professorId));</span>
+<span class="fc" id="L226">        recommendationRequest.setProfessor(professor);</span>
+<span class="fc" id="L227">        recommendationRequest.setRequester(currentUser.getUser());</span>
+<span class="fc" id="L228">        recommendationRequest.setStatus(&quot;PENDING&quot;);</span>
+<span class="fc" id="L229">        recommendationRequest.setDueDate(dueDate);</span>
+
+<span class="fc" id="L231">        RecommendationRequest savedRecommendationRequest = recommendationRequestRepository.save(recommendationRequest);</span>
+<span class="fc" id="L232">        return savedRecommendationRequest;</span>
     }
 
     /**
@@ -242,10 +241,10 @@ import lombok.extern.slf4j.Slf4j;
     @PreAuthorize(&quot;hasRole('ROLE_PROFESSOR')&quot;)
     public Iterable&lt;RecommendationRequest&gt; getRecommendationRequestByStatusForProfessor(
         @RequestParam String status) {
-<span class="fc" id="L245">        User currentUser = getCurrentUser().getUser();</span>
+<span class="fc" id="L244">        User currentUser = getCurrentUser().getUser();</span>
 
-<span class="fc" id="L247">        return recommendationRequestRepository.findAllByProfessorIdAndStatus(</span>
-<span class="fc" id="L248">            currentUser.getId(), status);</span>
+<span class="fc" id="L246">        return recommendationRequestRepository.findAllByProfessorIdAndStatus(</span>
+<span class="fc" id="L247">            currentUser.getId(), status);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
