@@ -39,9 +39,9 @@ import jakarta.validation.Valid;
 
     @Autowired
     public void startupValues() {
-<span class="fc" id="L42">        String[] values = {&quot;CS Department BS/MS program&quot;, &quot;Scholarship or Fellowship&quot;, &quot;MS program (other than CS Dept BS/MS)&quot;, &quot;PhD program&quot;, &quot;Other&quot;};</span>
+<span class="fc" id="L42">        String[] values = {&quot;CS Department BS/MS program&quot;, &quot;Scholarship or Fellowship&quot;, &quot;MS program (other than CS Dept BS/MS)&quot;, &quot;PhD program&quot;, &quot;Other&quot;, &quot;Other&quot;};</span>
 <span class="fc bfc" id="L43" title="All 2 branches covered.">        for (String value : values) {</span>
-<span class="pc bpc" id="L44" title="1 of 2 branches missed.">            if (!requestTypeRepository.findByRequestType(value).isPresent()) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            if (!requestTypeRepository.findByRequestType(value).isPresent()) {</span>
 <span class="fc" id="L45">                requestTypeRepository.save(RequestType.builder().requestType(value).build());</span>
             }
         }
