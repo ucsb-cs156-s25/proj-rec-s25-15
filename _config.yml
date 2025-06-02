@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s25/proj-rec-s25-15
 owner: ucsb-cs156-s25
 repo_name: proj-rec-s25-15
-pull_requests: []
+pull_requests: [{"author":{"id":"MDQ6VXNlcjExMTkwMTc=","is_bot":false,"login":"pconrad","name":"Phill Conrad"},"headRefName":"pc-fix-PR60","number":61,"title":"pc - fix problem with PR60 (which was merged by accident)","url":"https://github.com/ucsb-cs156-s25/proj-rec-s25-15/pull/61"}]
