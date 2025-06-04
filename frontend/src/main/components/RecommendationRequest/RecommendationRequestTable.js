@@ -58,7 +58,7 @@ export default function RecommendationRequestTable({ requests, currentUser }) {
     },
     {
       Header: "Recommendation Type",
-      accessor: "recommendationType",
+      accessor: row => row.recommendationType?.requestType ?? "N/A",
     },
     {
       Header: "Details",
