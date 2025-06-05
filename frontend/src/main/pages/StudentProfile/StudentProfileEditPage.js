@@ -34,6 +34,9 @@ export default function StudentProfileEditPage({ storybook = false }) {
     data: {
       professorId: recommendationrequest.professor_id,
       recommendationType: recommendationrequest.recommendationType,
+      recommendationType: {
+        id: recommendationrequest.recommendationType?.id,
+      },
       details: recommendationrequest.details,
       dueDate: recommendationrequest.dueDate,
     },
