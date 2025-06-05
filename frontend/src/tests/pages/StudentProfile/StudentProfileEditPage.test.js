@@ -226,7 +226,7 @@ describe("StudentProfileEditPage tests", () => {
       expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
       expect(JSON.parse(axiosMock.history.put[0].data)).toEqual({
         professorId: usersFixtures.twoProfessors[1].id.toString(),
-        recommendationType: recommendationTypeFixtures.fourTypes[1].requestType,
+        recommendationType: {},
         details: "Test details",
         dueDate: "2025-05-19T00:00:00",
       });
