@@ -180,7 +180,6 @@ function RecommendationRequestForm({
                     No recommendation types available, use Other in details
                   </option>
                 )}
-                <option value="Other">Other</option>
               </Form.Select>
             </OverlayTrigger>
             {errors.recommendationType && (
