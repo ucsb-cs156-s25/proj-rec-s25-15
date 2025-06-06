@@ -38,13 +38,11 @@ export default function StudentProfileIndexPage() {
       <div className="pt-2">
         {createButton()}
         <h1>My Requests</h1>
-        <div data-testid="left-div" style={{ marginLeft: "-180px" }}>
-          <div data-testid="top-div" style={{ marginTop: "40px" }}>
-            <RecommendationRequestTable
-              requests={recommendationrequests}
-              currentUser={currentUser}
-            />
-          </div>
+        <div data-testid="top-div" style={{ marginTop: "40px" }}>
+          <RecommendationRequestTable
+            requests={recommendationrequests}
+            currentUser={currentUser}
+          />
         </div>
       </div>
     </BasicLayout>

@@ -106,9 +106,6 @@ describe("StudentProfileIndexPage tests", () => {
       </QueryClientProvider>,
     );
 
-    const outerDiv = await screen.findByTestId("left-div");
-    expect(outerDiv).toHaveStyle("margin-left: -180px");
-
     const innerDiv = screen.getByTestId("top-div");
     expect(innerDiv).toHaveStyle("margin-top: 40px");
   });
